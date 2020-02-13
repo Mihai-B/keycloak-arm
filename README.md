@@ -8,7 +8,8 @@ This image uses the keycloak [repository](https://github.com/keycloak/keycloak-c
 
 ### Quick start Keycloak using MySql/MariaDb
 
-`docker run -p 9877:8080 --name keycloak -e KEYCLOAK_USER=<ADMIN_USERNAME> -e KEYCLOAK_PASSWORD=<ADMIN_PASS>  -e DB_VENDOR=mysql -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> rat2000/keycloak`
+#### First run
+`docker run -p 9877:8080 --name keycloak -e KEYCLOAK_USER=<ADMIN_USERNAME> -e KEYCLOAK_PASSWORD=<ADMIN_PASS>  -e DB_VENDOR=mysql -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> rat2000/keycloak:<KEYCLOAK_VERSION>`
 
 In this example Keycloak will be available on port 9877. <br>
 The variables need to be changed acordingly: <br>
@@ -17,8 +18,13 @@ The variables need to be changed acordingly: <br>
 <DB_ADDRESS> - where the database can be accessed, example: 192.168.1.10. Do not use 'localhost' even if the database is on the same raspberry pi <br>
 <DATABASE_NAME> - the database keycloak should create the tables in(make sure the database is allready created) <br>
 <DATABASE_USER> - the user that keycloak should use to access the database <br>
-<DATABASE_PASS> - the password keycloak should use to access the database
+<DATABASE_PASS> - the password keycloak should use to access the database <br>
+<KEYCLOAK_VERSION> - the Keycloak version to run
 
+#### Upgrading Keycloak container to a later version
+
+After Keycloak was run using the 'First run' command, and an upgrade is in order then the command to start Keycloak should look like this:
+`docker run -p 9877:8080 -d --name keycloak -e DB_VENDOR=mysql -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> rat2000/keycloak:<KEYCLOAK_VERSION>`
 
 ### Full documentation 
 For a complete documentation refer to the JBoss Keycloak's official documentation on how to use the docker image. The documentation can be found [here](https://hub.docker.com/r/jboss/keycloak).
