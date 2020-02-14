@@ -1,5 +1,9 @@
 # Keycloak Docker image
 
+**docker hub:** [![Docker Pulls](https://img.shields.io/docker/pulls/rat2000/keycloak.svg)](https://hub.docker.com/r/rat2000/keycloak) 
+<br>
+**buy me a coffe:** [![Buy a coffe](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.com/paypalme2/mihaibob/1?locale.x=en_US)
+
 ## How the image is build
 
 This image uses the keycloak [repository](https://github.com/keycloak/keycloak-containers) that is used to build the original JBoss Keycloak image. The only diference is that the Dockerfile used to build the "original" version of Keycloak is changed with the one from [this](https://github.com/Mihai-B/keycloak-arm) repository and the image is build on a Raspberry Pi 3 (32 bit)
