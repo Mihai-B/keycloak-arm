@@ -8,7 +8,7 @@
 ### ARM
 
 8.x: 8.0.0, 8.0.2 <br>
-9.x: 9.0.0, 9.0.2
+9.x: 9.0.0, 9.0.2, 9.0.3
 
 ### ARM 64
 - need help at this part as I personally do not have a ARM64 board
