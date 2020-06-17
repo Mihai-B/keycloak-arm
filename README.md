@@ -16,14 +16,16 @@
 
 ## How the image is build
 
-This image uses the keycloak [repository](https://github.com/keycloak/keycloak-containers) that is used to build the original JBoss Keycloak image. The only diference is that the Dockerfile used to build the "original" version of Keycloak is changed with the one from [this](https://github.com/Mihai-B/keycloak-arm) repository and the image is build on a Raspberry Pi 3 (32 bit)
+This image uses the official Keycloak [repository](https://github.com/keycloak/keycloak-containers) that is used to build the official Keycloak image. The only difference is that the Dockerfile used to build the official version of Keycloak is changed with the one from [this](https://github.com/Mihai-B/keycloak-arm) repository and the image is build on a Raspberry Pi 3 (32 bit)
+
+The Docker has to be changed because the base image that is used by Keycloak does not support ARM processors thus it is swapped with Ubuntu as base image
 
 ## How to use
 
 ### Quick start Keycloak using MySql/MariaDb
 
 #### First run
-`docker run -p 9877:8080 --name keycloak -e KEYCLOAK_USER=<ADMIN_USERNAME> -e KEYCLOAK_PASSWORD=<ADMIN_PASS>  -e DB_VENDOR=<DB_VENDOR> -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> rat2000/keycloak:<KEYCLOAK_VERSION>`
+`docker run -p 9877:8080 --name keycloak -e KEYCLOAK_USER=<ADMIN_USERNAME> -e KEYCLOAK_PASSWORD=<ADMIN_PASS>  -e DB_VENDOR=<DB_VENDOR> -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> -e JDBC_PARAMS: "serverTimezone=UTC" rat2000/keycloak:<KEYCLOAK_VERSION>`
 
 In this example Keycloak will be available on port 9877. <br>
 The variables need to be changed acordingly: <br>
@@ -39,9 +41,9 @@ KEYCLOAK_VERSION - the Keycloak version to run
 #### Upgrading Keycloak container to a later version
 
 After Keycloak was run using the 'First run' command, and an upgrade is in order then the command to start Keycloak should look like this:
-`docker run -p 9877:8080 -d --name keycloak -e DB_VENDOR=mysql -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> rat2000/keycloak:<KEYCLOAK_VERSION>`
+`docker run -p 9877:8080 -d --name keycloak -e DB_VENDOR=mysql -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> -e JDBC_PARAMS: "serverTimezone=UTC" rat2000/keycloak:<KEYCLOAK_VERSION>`
+
+Notice we did not specify the 'KEYCLOAK_USER' and 'KEYCLOAK_PASSWORD' since they are saved in the database now
 
 ### Full documentation 
-For a complete documentation refer to the JBoss Keycloak's official documentation on how to use the docker image. The documentation can be found [here](https://hub.docker.com/r/jboss/keycloak).
-
-
+For a complete documentation refer to Keycloak's official documentation on how to use the docker image because this image will work exactly the same. The documentation can be found [here](https://hub.docker.com/r/jboss/keycloak).
