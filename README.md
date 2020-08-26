@@ -8,7 +8,7 @@
 ### ARM
 
 10.x: 10.0.2 <br>
-11.x: 11.0.0 <br>
+11.x: 11.0.0, 11.0.1 <br>
 
 ### ARM 64
 - need help at this part as I personally do not have a ARM64 board
