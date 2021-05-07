@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 # https://github.com/jboss-dockerfiles/keycloak/tree/master/server/tools
 
-ENV KEYCLOAK_VERSION 12.0.2
+ENV KEYCLOAK_VERSION 13.0.0
 ENV JDBC_POSTGRES_VERSION 42.2.5
 ENV JDBC_MYSQL_VERSION 8.0.22
 ENV JDBC_MARIADB_VERSION 2.5.4
