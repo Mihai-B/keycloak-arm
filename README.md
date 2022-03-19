@@ -21,6 +21,7 @@
 17.x-legacy: 17.0.0-legacy <br>
 17.x: -might release a version with server-x support-
 <br>
+legacy: starting from version 17 images with this tag represent the old Keycloak with jboss support. Ther ones that do not have the legacy keyword are the ones that use the new Quarkus implementation(aka server-x as Keycloak refer to this new implementation)
 
 ## How the image is build
 
