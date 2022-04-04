@@ -38,25 +38,25 @@ The docker image has to be changed when building the ARM version of Keycloak bec
 
 #### First run
 ```
-docker run -p 9877:8080 --name keycloak -e KEYCLOAK_USER=<ADMIN_USERNAME> -e KEYCLOAK_PASSWORD=<ADMIN_PASS>  -e DB_VENDOR=<DB_VENDOR> -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> -e JDBC_PARAMS: "serverTimezone=UTC" mihaibob/keycloak:<KEYCLOAK_VERSION>
+docker run -p 9877:8080 --name keycloak -e KEYCLOAK_USER=<KEYCLOAK_USER> -e KEYCLOAK_PASSWORD=<KEYCLOAK_PASSWORD>  -e DB_VENDOR=<DB_VENDOR> -e DB_ADDR=<DB_ADDR> -e DB_DATABASE=<DB_DATABASE> -e DB_USER=<DB_USER> -e DB_PASSWORD=<DB_PASSWORD> -e JDBC_PARAMS: "serverTimezone=UTC" mihaibob/keycloak:<KEYCLOAK_VERSION>
 ```
 
 In this example Keycloak will be available on port 9877. <br>
 The variables need to be changed acordingly: <br>
-`ADMIN_USERNAME` - the username you want to use for Keycloak's admin user <br>
-`ADMIN_PASS` - the password for Keycloak's admin user <br>
+`KEYCLOAK_USER` - the username you want to use for Keycloak's admin user <br>
+`KEYCLOAK_PASSWORD` - the password for Keycloak's admin user <br>
 `DB_VENDOR` - the database vendor, can be any of: h2, mysql, mariadb, postgres, oracle, mssql <br>
-`DB_ADDRESS` - where the database can be accessed, example: 192.168.1.10. Do not use 'localhost' even if the database is on the same board <br>
-`DATABASE_NAME` - the database keycloak should create the tables in(make sure the database is allready created) <br>
-`DATABASE_USER` - the user that keycloak should use to access the database <br>
-`DATABASE_PASS` - the password keycloak should use to access the database <br>
+`DB_ADDR` - where the database can be accessed, example: 192.168.1.10. Do not use 'localhost' even if the database is on the same board <br>
+`DB_DATABASE` - the database keycloak should create the tables in(make sure the database is allready created) <br>
+`DB_USER` - the user that keycloak should use to access the database <br>
+`DB_PASSWORD` - the password keycloak should use to access the database <br>
 `KEYCLOAK_VERSION` - the Keycloak version to run
 
 #### Upgrading Keycloak container to a later version
 
 After Keycloak was run using the 'First run' command, and an upgrade is in order then the command to start Keycloak should look like this:
 ```
-docker run -p 9877:8080 -d --name keycloak -e DB_VENDOR=mysql -e DB_ADDR=<DB_ADDRESS> -e DB_DATABASE=<DATABASE_NAME> -e DB_USER=<DATABASE_USER> -e DB_PASSWORD=<DATABASE_PASS> -e JDBC_PARAMS: "serverTimezone=UTC" mihaibob/keycloak:<KEYCLOAK_VERSION>
+docker run -p 9877:8080 -d --name keycloak -e DB_VENDOR=mysql -e DB_ADDR=<DB_ADDR> -e DB_DATABASE=<DB_DATABASE> -e DB_USER=<DB_USER> -e DB_PASSWORD=<DB_PASSWORD> -e JDBC_PARAMS: "serverTimezone=UTC" mihaibob/keycloak:<KEYCLOAK_VERSION>
 ```
 
 Notice we did not specify the 'KEYCLOAK_USER' and 'KEYCLOAK_PASSWORD' since they are saved in the database now
