@@ -6,7 +6,7 @@
 
 ## Available Keycloak versions
 
-* Starting with version 15.0.1 of Keycloak, only ARM 64 is supported by this repo*
+*Starting with version 15.0.1 of Keycloak, only ARM 64 is supported by this repo* <br>
 *Starting from version 17 onwards images with legacy tag represent the old Keycloak with jboss support. Ther ones that do not have the legacy keyword are the ones that use the new Quarkus implementation(aka server-x as Keycloak refer to this new implementation)*
 
 ### ARM
