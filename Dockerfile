@@ -1,8 +1,8 @@
-FROM ubuntu:latest
+FROM registry.access.redhat.com/ubi8-minimal
 
 # https://github.com/jboss-dockerfiles/keycloak/tree/master/server/tools
 
-ENV KEYCLOAK_VERSION 14.0.0
+ENV KEYCLOAK_VERSION 17.0.1
 ENV JDBC_POSTGRES_VERSION 42.2.5
 ENV JDBC_MYSQL_VERSION 8.0.22
 ENV JDBC_MARIADB_VERSION 2.5.4
@@ -19,9 +19,7 @@ ARG KEYCLOAK_DIST=https://github.com/keycloak/keycloak/releases/download/$KEYCLO
 
 USER root
 
-RUN apt update
-RUN apt --assume-yes install curl gzip hostname openssl tar
-RUN apt --assume-yes install openjdk-11-jdk-headless
+RUN microdnf update -y && microdnf install -y glibc-langpack-en gzip hostname java-11-openjdk-headless openssl tar which && microdnf clean all
 
 ADD tools /opt/jboss/tools
 RUN /opt/jboss/tools/build-keycloak.sh
