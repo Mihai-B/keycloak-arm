@@ -20,7 +20,8 @@
 ### ARM 64
 15.x: 15.0.1 <br>
 17.x-legacy: 17.0.0-legacy, 17.0.1-legacy <br>
-17.x: -might release a version with server-x support-
+18.x-legacy: 18.0.0-legacy <br>
+18.x: -might release a version with server-x support-
 <br>
 
 ## How the image is build
